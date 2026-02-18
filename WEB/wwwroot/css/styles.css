@@ -1,0 +1,1052 @@
+/* === ZÁKLADNÍ STYLY === */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+    line-height: 1.6;
+    color: #0f172a;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+    background-attachment: fixed;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* === ANIMACE === */
+@keyframes slideDown {
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1) rotate(0deg); }
+    50% { transform: scale(1.1) rotate(180deg); }
+}
+
+@keyframes shimmer {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
+/* === NAVIGACE === */
+header {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    animation: slideDown 0.5s ease-out;
+}
+
+nav {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 1.2rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: -0.5px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.logo:hover {
+    transform: scale(1.05);
+}
+
+.mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    color: #667eea;
+    cursor: pointer;
+    padding: 0.5rem;
+    transition: transform 0.3s ease;
+}
+
+.mobile-menu-btn:hover {
+    transform: scale(1.1);
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 2.5rem;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #64748b;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    position: relative;
+    padding: 0.5rem 0;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+    width: 100%;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: #667eea;
+}
+
+/* === HLAVNÍ OBSAH === */
+main {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 3rem;
+}
+
+/* === HERO SEKCE === */
+.hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    padding: 5rem 0;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 30px;
+    padding: 4rem;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+    margin-bottom: 3rem;
+}
+
+.hero-content h1 {
+    font-size: 4rem;
+    font-weight: 900;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 1rem;
+    line-height: 1.1;
+    letter-spacing: -2px;
+}
+
+.subtitle {
+    font-size: 1.8rem;
+    color: #667eea;
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    color: #64748b;
+    margin-bottom: 2.5rem;
+    line-height: 1.8;
+}
+
+.hero-image {
+    position: relative;
+    /* Zajistí, že img uvnitř se zobrazí */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 400px; /* Ponecháme výšku pro zástupnou ikonu v Canvasu */
+}
+
+.hero-image img {
+    width: 100%;
+    height: auto;
+    max-height: 400px;
+    object-fit: cover;
+    border-radius: 25px;
+    box-shadow: 0 25px 50px rgba(102, 126, 234, 0.4);
+    transform: perspective(1000px) rotateY(-5deg);
+    transition: transform 0.3s ease;
+}
+
+.hero-image img:hover {
+    transform: perspective(1000px) rotateY(0deg) scale(1.02);
+}
+
+/* Zástupný styl pro rozbitý obrázek (viditelný zde) */
+.hero-image img[src$=".webp"]:not([src=""])::before {
+    content: '🌐 Obrázek ArabMeet.webp se načte po nasazení. (Styl: ' attr(src)')';
+    display: block;
+    width: 100%;
+    height: 400px;
+    line-height: 400px;
+    text-align: center;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+    border-radius: 25px;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+
+/* === TLAČÍTKA === */
+.cta-button {
+    display: inline-block;
+    padding: 1.2rem 3rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s;
+}
+
+.cta-button:hover::before {
+    left: 100%;
+}
+
+.cta-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(102, 126, 234, 0.6);
+}
+
+.cta-button:active {
+    transform: translateY(-1px);
+}
+
+.full-width {
+    width: 100%;
+}
+
+/* === INTRO SEKCE === */
+.intro {
+    padding: 4rem 0;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 30px;
+    padding: 4rem;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+    margin-bottom: 3rem;
+}
+
+.intro h2 {
+    font-size: 3rem;
+    margin-bottom: 3rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+    margin-top: 2rem;
+}
+
+.feature-card {
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+    padding: 3rem 2rem;
+    border-radius: 25px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+    transition: all 0.4s ease;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(10px);
+    cursor: pointer;
+}
+
+.feature-card:hover {
+    transform: translateY(-10px) scale(1.03);
+    box-shadow: 0 20px 50px rgba(102, 126, 234, 0.3);
+    border-color: #667eea;
+}
+
+.feature-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.feature-card h3 {
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+    color: #0f172a;
+    font-weight: 700;
+}
+
+.feature-card p {
+    color: #64748b;
+    font-size: 1.05rem;
+}
+
+/* === STATISTIKY === */
+.stats {
+    padding: 5rem 4rem;
+    text-align: center;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+    border-radius: 30px;
+    color: white;
+    margin: 3rem 0;
+    box-shadow: 0 25px 60px rgba(102, 126, 234, 0.4);
+    position: relative;
+    overflow: hidden;
+}
+
+.stats::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+    animation: pulse 15s ease-in-out infinite;
+}
+
+.stats h2 {
+    font-size: 3rem;
+    margin-bottom: 4rem;
+    font-weight: 800;
+    position: relative;
+    z-index: 1;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+    max-width: 1000px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+.stat {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    padding: 2.5rem;
+    border-radius: 20px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.stat:hover {
+    transform: scale(1.05);
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.stat-number {
+    font-size: 3.5rem;
+    font-weight: 900;
+    margin-bottom: 0.5rem;
+}
+
+.stat-label {
+    font-size: 1.2rem;
+    opacity: 0.95;
+    font-weight: 500;
+}
+
+/* === TABULKA POROVNÁNÍ CEN === */
+.pricing-comparison {
+    padding: 5rem 4rem;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 30px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+}
+
+.pricing-comparison h2 {
+    font-size: 3rem;
+    margin-bottom: 3rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.comparison-table-container {
+    overflow-x: auto;
+}
+
+.comparison-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin: 2rem auto;
+    max-width: 1000px;
+    text-align: left;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    min-width: 700px; /* Zvětšeno pro 4 sloupce */
+}
+
+.comparison-table th, .comparison-table td {
+    padding: 1.5rem 1rem;
+    border-bottom: 1px solid #e2e8f0;
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Přidán transform pro :hover */
+}
+
+.comparison-table thead th {
+    /* Zvýraznění záhlaví pomocí CSS */
+    background: linear-gradient(135deg, #5a6cd3 0%, #667eea 100%);
+    color: white;
+    border-bottom: 2px solid #5a6cd3;
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+.comparison-table tbody th { /* Styl pro levou stranu - název funkce */
+    background-color: #f1f5f9;
+    font-weight: 600;
+    color: #0f172a;
+    position: sticky;
+    left: 0; 
+    z-index: 10;
+}
+
+.comparison-table td {
+    background-color: white;
+    color: #475569;
+    min-width: 150px;
+}
+
+/* Pseudoselektor pro viditelné ovlivnění vzhledu tabulky */
+.comparison-table tbody tr:hover th,
+.comparison-table tbody tr:hover td {
+    background-color: #e6f0ff; /* Mírně světlejší modrá pro hover efekt */
+    transform: scale(1.01); /* Lehká animace */
+    color: #4f46e5;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.comparison-table tbody tr:last-child td,
+.comparison-table tbody tr:last-child th {
+    border-bottom: none;
+}
+/* Konec nového CSS pro tabulku */
+
+
+/* === STRÁNKA FUNKCE (STYLY POUŽITÉ ZDE I NA FEATURES.HTML) === */
+.page-header {
+    text-align: center;
+    padding: 4rem 0;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 30px;
+    padding: 4rem;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+    margin-bottom: 3rem;
+}
+
+.page-header h1 {
+    font-size: 4rem;
+    font-weight: 900;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 1rem;
+}
+
+.page-header p {
+    font-size: 1.3rem;
+    color: #64748b;
+}
+
+.features-detail {
+    padding: 2rem 0;
+}
+
+.feature-block {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    margin-bottom: 3rem;
+    padding: 4rem;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 30px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease;
+}
+
+.feature-block:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 25px 70px rgba(102, 126, 234, 0.25);
+}
+
+.feature-block.reverse {
+    grid-template-columns: 1fr 1fr;
+}
+
+.feature-block.reverse .feature-text {
+    order: -1;
+}
+
+/* Styl pro obrázek na stránce Funkce */
+.feature-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(102, 126, 234, 0.3);
+}
+
+.placeholder-img {
+    width: 100%;
+    height: 350px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 6rem;
+    box-shadow: 0 15px 40px rgba(102, 126, 234, 0.3);
+    animation: float 6s ease-in-out infinite;
+}
+
+.feature-text h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: #0f172a;
+    font-weight: 800;
+}
+
+.feature-text p {
+    color: #64748b;
+    margin-bottom: 2rem;
+    font-size: 1.15rem;
+    line-height: 1.8;
+}
+
+.feature-text ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.feature-text ul li {
+    padding: 1rem 0;
+    color: #64748b;
+    position: relative;
+    padding-left: 2.5rem;
+    font-size: 1.05rem;
+    transition: color 0.3s ease;
+}
+
+.feature-text ul li:hover {
+    color: #667eea;
+}
+
+.feature-text ul li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    width: 30px;
+    height: 30px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    font-weight: bold;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cta-section {
+    text-align: center;
+    padding: 5rem 4rem;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 30px;
+    margin: 3rem 0;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+}
+
+.cta-section h2 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.cta-section p {
+    font-size: 1.3rem;
+    color: #64748b;
+    margin-bottom: 2.5rem;
+}
+
+/* === STRÁNKA REGISTRACE (STYLY POUŽITÉ ZDE I NA JOIN.HTML) === */
+.join-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    padding: 3rem 0;
+}
+
+.join-container {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 4rem;
+    border-radius: 30px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+}
+
+.join-container h1 {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+    font-weight: 900;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.join-subtitle {
+    color: #64748b;
+    margin-bottom: 3rem;
+    font-size: 1.1rem;
+}
+
+.signup-form {
+    margin-top: 2rem;
+}
+
+.form-group {
+    margin-bottom: 1.8rem;
+    position: relative;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.7rem;
+    color: #0f172a;
+    font-weight: 600;
+    font-size: 1.05rem;
+    transition: color 0.3s ease;
+}
+
+.form-group.focused label {
+    color: #667eea;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 1rem 1.2rem;
+    border: 2px solid #e2e8f0;
+    border-radius: 15px;
+    font-size: 1.05rem;
+    transition: all 0.3s ease;
+    background: white;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
+    transform: translateY(-2px);
+}
+
+.error-message {
+    display: block;
+    color: #ef4444;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+    min-height: 1.2rem;
+}
+
+.password-strength {
+    display: none;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+    font-weight: 600;
+}
+
+.success-message {
+    display: none;
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(5, 150, 105, 0.1) 100%);
+    padding: 2rem;
+    border-radius: 20px;
+    border: 2px solid #10b981;
+    text-align: center;
+}
+
+.success-icon {
+    display: inline-block;
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    color: white;
+    font-size: 2rem;
+    font-weight: bold;
+    border-radius: 50%;
+    line-height: 60px;
+    margin-bottom: 1rem;
+}
+
+.success-message p {
+    font-size: 1.2rem;
+    color: #0f172a;
+    font-weight: 600;
+}
+
+.terms {
+    font-size: 0.9rem;
+    color: #94a3b8;
+    text-align: center;
+    margin-top: 1.5rem;
+    line-height: 1.6;
+}
+
+.login-option {
+    text-align: center;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 2px solid #e2e8f0;
+}
+
+.login-option a {
+    color: #667eea;
+    text-decoration: none;
+    font-weight: 700;
+    transition: color 0.3s ease;
+}
+
+.login-option a:hover {
+    color: #764ba2;
+}
+
+/* === BENEFITY === */
+.join-benefits {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 4rem;
+    border-radius: 30px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+}
+
+.join-benefits h2 {
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.benefits-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+}
+
+.benefit {
+    display: flex;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+
+.benefit:hover {
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+    transform: translateX(10px);
+}
+
+.benefit-icon {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.5rem;
+    flex-shrink: 0;
+    box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+}
+
+.benefit h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+    color: #0f172a;
+    font-weight: 700;
+}
+
+.benefit p {
+    color: #64748b;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+/* === SCROLL TO TOP BUTTON === */
+.scroll-to-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+    z-index: 99;
+}
+
+.scroll-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.scroll-to-top:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(102, 126, 234, 0.6);
+}
+
+/* === FOOTER === */
+footer {
+    background: rgba(15, 23, 42, 0.95);
+    backdrop-filter: blur(10px);
+    color: white;
+    text-align: center;
+    padding: 3rem;
+    margin-top: 4rem;
+    border-radius: 30px 30px 0 0;
+}
+
+footer p {
+    margin: 0.5rem 0;
+    opacity: 0.9;
+    font-size: 1.05rem;
+}
+
+/* === RESPONSIVITA === */
+@media (max-width: 768px) {
+    .hero,
+    .feature-block,
+    .join-section,
+    .features-grid,
+    .stats-grid,
+    .big-box {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-content h1,
+    .page-header h1 {
+        font-size: 2.5rem;
+    }
+
+    .mobile-menu-btn {
+        display: block;
+    }
+
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(10px);
+        flex-direction: column;
+        padding: 2rem;
+        gap: 1rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-links.mobile-active {
+        display: flex;
+    }
+
+    main {
+        padding: 1.5rem;
+    }
+
+    nav {
+        padding: 1rem 1.5rem;
+    }
+
+    .hero,
+    .intro,
+    .page-header,
+    .feature-block,
+    .join-container,
+    .join-benefits,
+    .cta-section,
+    .pricing-comparison,
+    .big-box,
+    .small-box {
+        padding: 2.5rem 2rem;
+    }
+    
+    /* V Canvasu bude na místě obrázku zobrazen fallback */
+    .hero-image {
+        height: 300px; 
+    }
+
+    .hero-image img[src$=".webp"]:not([src=""])::before {
+        height: 300px;
+        line-height: 300px;
+        font-size: 0.9rem;
+    }
+    
+    .placeholder-img {
+        height: 300px;
+        font-size: 5rem;
+    }
+
+    .feature-block.reverse .feature-text {
+        order: 0;
+    }
+
+    .scroll-to-top {
+        bottom: 1.5rem;
+        right: 1.5rem;
+        width: 45px;
+        height: 45px;
+        font-size: 1.3rem;
+    }
+}
+
+/* === STRÁNKA O NÁS === */
+.about-container {
+    padding: 2rem 0;
+}
+
+.big-box {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+    margin-bottom: 2.5rem;
+    padding: 3rem;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 30px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+}
+
+.big-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 25px 70px rgba(102, 126, 234, 0.25);
+}
+
+.small-box {
+    padding: 2rem;
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
+    border-radius: 20px;
+    border: 2px solid rgba(102, 126, 234, 0.1);
+    transition: all 0.3s ease;
+}
+
+.small-box:hover {
+    border-color: #667eea;
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+    transform: scale(1.02);
+}
+
+.box-icon {
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+    display: block;
+    text-align: center;
+}
+
+.small-box h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    font-weight: 800;
+    color: #0f172a;
+    text-align: center;
+}
+
+.small-box p {
+    color: #64748b;
+    font-size: 1.05rem;
+    line-height: 1.8;
+    margin-bottom: 1rem;
+}
+
+.small-box p:last-child {
+    margin-bottom: 0;
+}
+
+.small-box strong {
+    color: #667eea;
+    font-weight: 700;
+}

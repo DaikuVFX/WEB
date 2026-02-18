@@ -1,8 +1,218 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Habibi Meet - Propojujeme lidi</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Habibi Meet</div>
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Domů</a></li>
+                <li><a href="features.html">Funkce</a></li>
+                <li><a href="about.html">O nás</a></li>
+                <li><a href="join.html">Připoj se</a></li>
+            </ul>
+        </nav>
+    </header>
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Vítej na Habibi Meet</h1>
+                <p class="subtitle">Sociální síť, která skutečně propojuje</p>
+                <p>Poznej nové přátele, sdílej své zážitky a buď součástí komunity, která tě chápe.</p>
+                <a href="join.html" class="cta-button">Začít zdarma</a>
+            </div>
+            
+            <div class="hero-image">
+                <img 
+                    src="obrazky/ArabMeet.webp" 
+                    alt="Multikulturní setkání uživatelů Habibi Meet" 
+                    onerror="this.onerror=null;this.style.width='100%';this.style.height='400px';this.style.backgroundColor='#764ba2';this.style.color='white';this.style.textAlign='center';this.style.lineHeight='400px';this.alt='ArabMeet.webp: Načte se při nasazení z obrazky složky.'"
+                />
+            </div>
+        </section>
+
+        <section class="intro">
+            <h2>Proč Habibi Meet?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🤝</div>
+                    <h3>Skutečná spojení</h3>
+                    <p>Nejen lajky, ale opravdové vztahy a konverzace</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🌍</div>
+                    <h3>Globální komunita</h3>
+                    <p>Propoj se s lidmi z celého světa</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔒</div>
+                    <h3>Tvoje soukromí</h3>
+                    <p>Kontroluješ, co a s kým sdílíš</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="stats">
+            <h2>Jsme rychle rostoucí komunita</h2>
+            <div class="stats-grid">
+                <div class="stat">
+                    <div class="stat-number" data-target="2500000">0</div>
+                    <div class="stat-label">Aktivních uživatelů</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number" data-target="150">0</div>
+                    <div class="stat-label">Zemí</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number" data-target="10000000">0</div>
+                    <div class="stat-label">Sdílených momentů denně</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="pricing-comparison">
+            <h2>Srovnání účtů (Základní vs. Premium vs. Pro)</h2>
+            <p>Získej maximum ze sítě Habibi Meet. Porovnejte funkce a vyberte si plán, který vám nejlépe vyhovuje.</p>
+
+            <div class="comparison-table-container">
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Funkce / Účet</th>
+                            <th>Basic (Zdarma)</th>
+                            <th>Premium</th>
+                            <th>Pro</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>HD Video & Foto</th>
+                            <td>Ne</td>
+                            <td>Ano (HD)</td>
+                            <td>Ano (4K)</td>
+                        </tr>
+                        <tr>
+                            <th>Reklamy</th>
+                            <td>Ano (minimum)</td>
+                            <td>Ne</td>
+                            <td>Ne</td>
+                        </tr>
+                        <tr>
+                            <th>Prioritní podpora</th>
+                            <td>Ne</td>
+                            <td>Ano (Email)</td>
+                            <td>Ano (24/7 Chat)</td>
+                        </tr>
+                        <tr>
+                            <th>Analytika profilu</th>
+                            <td>Základní</td>
+                            <td>Pokročilá</td>
+                            <td>Kompletní (vč. Geo)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        </main>
+
+    <footer>
+        <p>&copy; 2024 Habibi Meet. Autor Sebastian Kuška.</p>
+        <p>Vytvořeno jako školní projekt</p>
+    </footer>
+
+    <button class="scroll-to-top" id="scrollToTop" onclick="scrollToTop()">↑</button>
+
+    <script>
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('mobile-active');
+        }
+
+        // Scroll to top button
+        const scrollToTopBtn = document.getElementById('scrollToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                scrollToTopBtn.classList.add('visible');
+            } else {
+                scrollToTopBtn.classList.remove('visible');
+            }
+        });
+
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Animace čísel ve statistikách
+        function animateNumbers() {
+            const stats = document.querySelectorAll('.stat-number');
+            
+            stats.forEach(stat => {
+                const target = parseInt(stat.getAttribute('data-target'));
+                const duration = 2000;
+                const step = target / (duration / 16);
+                let current = 0;
+                
+                const timer = setInterval(() => {
+                    current += step;
+                    if (current >= target) {
+                        current = target;
+                        clearInterval(timer);
+                    }
+                    
+                    if (target >= 1000000) {
+                        stat.textContent = (current / 1000000).toFixed(1) + 'M+';
+                    } else if (target >= 1000) {
+                        stat.textContent = (current / 1000).toFixed(1) + 'K+';
+                    } else {
+                        stat.textContent = Math.floor(current) + '+';
+                    }
+                }, 16);
+            });
+        }
+
+        // Spustit animaci čísel když je sekce viditelná
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateNumbers();
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        const statsSection = document.querySelector('.stats');
+        if (statsSection) {
+            observer.observe(statsSection);
+        }
+
+        // Přidat animace při scrollování
+        const animateOnScroll = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.hero, .intro, .stats, .feature-card, .pricing-comparison').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            animateOnScroll.observe(el);
+        });
+    </script>
+</body>
+</html>

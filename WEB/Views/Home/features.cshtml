@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Funkce - Habibi Meet</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Habibi Meet</div>
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Domů</a></li>
+                <li><a href="features.html">Funkce</a></li>
+                <li><a href="about.html">O nás</a></li>
+                <li><a href="join.html">Připoj se</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <h1>Co nabízíme</h1>
+            <p>Objevte funkce, které dělají Habibi Meet výjimečným</p>
+        </section>
+
+        <section class="features-detail">
+            
+            <div class="feature-block reverse">
+                <div class="feature-text">
+                    <h2>Mobilní přístup a aplikace</h2>
+                    <p>Měj Habibi Meet vždy u sebe. Naše aplikace je optimalizovaná pro plynulé používání na jakémkoliv zařízení.</p>
+                    <ul>
+                        <li>Plně responzivní design</li>
+                        <li>Notifikace v reálném čase</li>
+                        <li>Nízká spotřeba dat</li>
+                        <li>Intuitivní mobilní rozhraní</li>
+                    </ul>
+                </div>
+                <div class="feature-image">
+                    <img 
+                        src="obrazky/ManPhone.jpg" 
+                        alt="Muž používající Habibi Meet na telefonu" 
+                        onerror="this.onerror=null;this.style.width='100%';this.style.height='350px';this.style.backgroundColor='#667eea';this.style.color='white';this.style.textAlign='center';this.style.lineHeight='350px';this.alt='ManPhone.jpg: Obrázek se načte při nasazení z obrazky složky.'"
+                    />
+                </div>
+            </div>
+            <div class="feature-block">
+                <div class="feature-image">
+                    <img 
+                        src="obrazky/GuyPhone.jpg" 
+                        alt="Další muž používající Habibi Meet na telefonu" 
+                        onerror="this.onerror=null;this.style.width='100%';this.style.height='350px';this.style.backgroundColor='#667eea';this.style.color='white';this.style.textAlign='center';this.style.lineHeight='350px';this.alt='ManPhone.jpg: Obrázek se načte při nasazení z obrazky složky.'"
+                    />
+                </div>
+                <div class="feature-text">
+                    <h2>Sdílení momentů</h2>
+                    <p>Zachyť své nejlepší okamžiky a sdílej je se svými přáteli. Fotky, videa, stories - vše na jednom místě.</p>
+                    <ul>
+                        <li>Neomezené nahrávání fotografií</li>
+                        <li>HD video support</li>
+                        <li>Efekty a filtry</li>
+                        <li>24hodinové stories</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="feature-block reverse">
+                <div class="feature-text">
+                    <h2>Chatování v reálném čase</h2>
+                    <p>Zůstaň v kontaktu s přáteli pomocí našeho rychlého a bezpečného messagingu.</p>
+                    <ul>
+                        <li>Soukromé a skupinové chaty</li>
+                        <li>Video a audio hovory</li>
+                        <li>Sdílení souborů</li>
+                        <li>End-to-end šifrování</li>
+                    </ul>
+                </div>
+                <div class="feature-image">
+                    <div class="placeholder-img">💬</div>
+                </div>
+            </div>
+
+            <div class="feature-block">
+                <div class="feature-image">
+                    <div class="placeholder-img">👥</div>
+                </div>
+                <div class="feature-text">
+                    <h2>Komunity a skupiny</h2>
+                    <p>Najdi lidi se stejnými zájmy. Připoj se ke skupinám nebo vytvoř vlastní.</p>
+                    <ul>
+                        <li>Tematické skupiny</li>
+                        <li>Eventy a setkání</li>
+                        <li>Diskuzní fóra</li>
+                        <li>Možnost vytváření vlastních komunit</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <h2>Připraven začít?</h2>
+            <p>Připoj se k milionům uživatelů na celém světě</p>
+            <a href="join.html" class="cta-button">Vytvořit účet zdarma</a>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Habibi Meet. Všechna práva vyhrazena.</p>
+        <p>Vytvořeno jako školní projekt</p>
+    </footer>
+
+    <button class="scroll-to-top" id="scrollToTop" onclick="scrollToTop()">↑</button>
+
+    <script>
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('mobile-active');
+        }
+
+        // Scroll to top button
+        const scrollToTopBtn = document.getElementById('scrollToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                scrollToTopBtn.classList.add('visible');
+            } else {
+                scrollToTopBtn.classList.remove('visible');
+            }
+        });
+
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+        
+        // Přidat animace při scrollování
+        const animateOnScroll = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.page-header, .feature-block, .cta-section').forEach((el, index) => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
+            animateOnScroll.observe(el);
+        });
+    </script>
+</body>
+</html>
