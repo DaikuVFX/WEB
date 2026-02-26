@@ -1,6 +1,164 @@
-﻿@{
-    ViewData["Title"] = "Privacy Policy";
-}
-<h1>@ViewData["Title"]</h1>
+﻿<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soukromí a bezpečnost - Habibi Meet</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Habibi Meet</div>
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a asp-controller="Home" asp-action="Index">Domů</a></li>
+                <li><a asp-controller="Home" asp-action="Features">Funkce</a></li>
+                <li><a asp-controller="Home" asp-action="About">O nás</a></li>
+                <li><a asp-controller="Home" asp-action="Privacy">Soukromí</a></li>
+            </ul>
+        </nav>
+    </header>
 
-<p>Use this page to detail your site's privacy policy.</p>
+    <main>
+        <section class="page-header">
+            <h1>Soukromí a bezpečnost</h1>
+            <p>Tvoje bezpečnost je naší nejvyšší prioritou</p>
+        </section>
+
+        <section class="about-container">
+
+            <!-- Box 1: Ochrana dat -->
+            <div class="big-box">
+                <div class="small-box">
+                    <div class="box-icon">🔐</div>
+                    <h2>Šifrování dat</h2>
+                    <p>Veškerá komunikace na Habibi Meet je chráněna end-to-end šifrováním. Nikdo kromě tebe a příjemce zprávy ji nemůže přečíst.</p>
+                    <p>Používáme standardy AES-256 a TLS 1.3 pro maximální ochranu tvých osobních údajů při přenosu i uložení.</p>
+                </div>
+                <div class="small-box">
+                    <div class="box-icon">🗂️</div>
+                    <h2>Správa osobních údajů</h2>
+                    <p>Máš plnou kontrolu nad svými daty. Kdykoli si můžeš stáhnout kopii svých dat nebo požádat o jejich trvalé smazání.</p>
+                    <p>Nikdy neprodáváme tvoje osobní údaje třetím stranám a nepoužíváme je k reklamním účelům bez tvého souhlasu.</p>
+                </div>
+            </div>
+
+            <!-- Box 2: Nastavení soukromí -->
+            <div class="big-box">
+                <div class="small-box">
+                    <div class="box-icon">👁️</div>
+                    <h2>Viditelnost profilu</h2>
+                    <p>Sám rozhoduješ, kdo vidí tvůj profil. Můžeš ho nastavit jako veřejný, pouze pro přátele nebo zcela soukromý.</p>
+                    <p>Každý příspěvek, fotka nebo story má vlastní nastavení viditelnosti, které můžeš kdykoli změnit.</p>
+                </div>
+                <div class="small-box">
+                    <div class="box-icon">🚫</div>
+                    <h2>Blokování a nahlášení</h2>
+                    <p>Pokud tě někdo obtěžuje, jedním kliknutím ho můžeš zablokovat. Blokovaný uživatel tě nenajde a nebude vidět tvůj obsah.</p>
+                    <p>Každý obsah nebo uživatele lze nahlásit. Náš tým každé nahlášení prověřuje a reaguje do 24 hodin.</p>
+                </div>
+            </div>
+
+            <!-- Box 3: Bezpečnost účtu -->
+            <div class="big-box">
+                <div class="small-box">
+                    <div class="box-icon">🛡️</div>
+                    <h2>Dvoufaktorové ověření</h2>
+                    <p>Chraň svůj účet pomocí dvoufaktorového ověření (2FA). Přihlášení bude vyžadovat nejen heslo, ale i kód z tvého telefonu.</p>
+                    <p>Podporujeme autentifikační aplikace jako Google Authenticator i SMS kódy pro maximální flexibilitu.</p>
+                </div>
+                <div class="small-box">
+                    <div class="box-icon">🔑</div>
+                    <h2>Správa přihlášení</h2>
+                    <p>Vidíš přehled všech zařízení, na kterých jsi přihlášen. Neznámé zařízení? Odhlásíš ho vzdáleně jediným kliknutím.</p>
+                    <p>Při podezřelé aktivitě tě automaticky upozorníme e-mailem, abys mohl rychle zareagovat.</p>
+                </div>
+            </div>
+
+            <!-- Box 4: Ochrana mladších uživatelů -->
+            <div class="big-box">
+                <div class="small-box">
+                    <div class="box-icon">👶</div>
+                    <h2>Ochrana mladistvých</h2>
+                    <p>Habibi Meet je určen pro uživatele starší 13 let. Máme zavedené ověřovací procesy, které chrání mladší uživatele před nevhodným obsahem.</p>
+                    <p>Účty mladistvých mají automaticky přísnější nastavení soukromí a omezení kontaktů od neznámých osob.</p>
+                </div>
+                <div class="small-box">
+                    <div class="box-icon">🧹</div>
+                    <h2>Moderování obsahu</h2>
+                    <p>Kombinujeme automatické AI nástroje s lidskými moderátory, kteří hlídají, aby platforma zůstala bezpečná pro všechny.</p>
+                    <p>Nevhodný obsah je odstraněn zpravidla do hodiny od nahlášení. Opakované porušení pravidel vede k trvalému zákazu.</p>
+                </div>
+            </div>
+
+            <!-- Box 5: Pravidla komunity -->
+            <div class="big-box">
+                <div class="small-box">
+                    <div class="box-icon">📜</div>
+                    <h2>Pravidla komunity</h2>
+                    <p>Na Habibi Meet není místo pro nenávist, obtěžování ani diskriminaci. Naše pravidla jsou jasná a platí pro všechny stejně.</p>
+                    <p>Zakázaný obsah zahrnuje: násilí, hate speech, spam, podvody a jakýkoli obsah porušující práva ostatních uživatelů.</p>
+                </div>
+                <div class="small-box">
+                    <div class="box-icon">📞</div>
+                    <h2>Podpora a pomoc</h2>
+                    <p>Narazil jsi na problém nebo se cítíš v ohrožení? Náš bezpečnostní tým je dostupný 7 dní v týdnu přes sekci Nápověda.</p>
+                    <p>V naléhavých situacích tě přesměrujeme na příslušné úřady nebo krizové linky. Tvoje bezpečnost je pro nás na prvním místě.</p>
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Habibi Meet. Všechna práva vyhrazena.</p>
+        <p>Vytvořeno jako školní projekt</p>
+    </footer>
+
+    <button class="scroll-to-top" id="scrollToTop" onclick="scrollToTop()">↑</button>
+
+    <script>
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('mobile-active');
+        }
+
+        // Scroll to top button
+        const scrollToTopBtn = document.getElementById('scrollToTop');
+
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                scrollToTopBtn.classList.add('visible');
+            } else {
+                scrollToTopBtn.classList.remove('visible');
+            }
+        });
+
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Animace při scrollování
+        const animateOnScroll = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.page-header, .big-box, .cta-section').forEach((el, index) => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
+            animateOnScroll.observe(el);
+        });
+    </script>
+</body>
+</html>
