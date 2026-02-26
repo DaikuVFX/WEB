@@ -12,10 +12,9 @@
             <div class="logo">Habibi Meet</div>
             <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
             <ul class="nav-links" id="navLinks">
-                <li><a href="index.html">Domů</a></li>
-                <li><a href="features.html">Funkce</a></li>
-                <li><a href="about.html" class="active">O nás</a></li>
-                <li><a href="join.html">Připoj se</a></li>
+                <li><a asp-controller="Home" asp-action="Index">Domů</a></li>
+                <li><a asp-controller="Home" asp-action="Features">Funkce</a></li>
+                <li><a asp-controller="Home" asp-action="About">O nás</a></li>
             </ul>
         </nav>
     </header>
@@ -108,11 +107,6 @@
             </div>
         </section>
 
-        <section class="cta-section">
-            <h2>Staň se částí našeho příběhu</h2>
-            <p>Připoj se k nám a pomoz tvořit budoucnost sociálních sítí</p>
-            <a href="join.html" class="cta-button">Připojit se nyní</a>
-        </section>
     </main>
 
     <footer>
