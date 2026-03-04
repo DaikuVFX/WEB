@@ -1,3 +1,6 @@
+using Microsoft.EntityFrameworkCore;
+using WEB.Data;
+
 namespace WEB
 {
     public class Program
@@ -6,12 +9,21 @@ namespace WEB
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container.
+            builder.Services.AddDbContext<AppDbContext>(options =>
+                options.UseSqlite("Data Source=habibi.db"));
+
+            builder.Services.AddAuthentication("Cookies")
+                .AddCookie("Cookies", options =>
+                {
+                    options.LoginPath = "/Account/Login";
+                });
+
+            builder.Services.AddAuthorization();
+
             builder.Services.AddControllersWithViews();
 
             var app = builder.Build();
 
-            // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())
             {
                 app.UseExceptionHandler("/Home/Error");
@@ -19,10 +31,10 @@ namespace WEB
 
             app.UseStaticFiles();
             app.UseRouting();
-
+            app.UseAuthentication();
             app.UseAuthorization();
-
             app.MapStaticAssets();
+
             app.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}")
