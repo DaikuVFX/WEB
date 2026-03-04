@@ -1,149 +1,91 @@
-<!DOCTYPE html>
-<html lang="cs">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>O nás - Habibi Meet</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <header>
-        <nav>
-            <div class="logo">Habibi Meet</div>
-            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
-            <ul class="nav-links" id="navLinks">
-                <li><a asp-controller="Home" asp-action="Index">Domů</a></li>
-                <li><a asp-controller="Home" asp-action="Features">Funkce</a></li>
-                <li><a asp-controller="Home" asp-action="About">O nás</a></li>
-                <li><a asp-controller="Home" asp-action="Privacy">Soukromí</a></li>
-                <li><a asp-controller="Account" asp-action="Login">Přihlásit se</a></li>
-            </ul>
-        </nav>
-    </header>
+@{
+    ViewData["Title"] = "O nás";
+}
 
-    <main>
-        <section class="page-header">
-            <h1>O Habibi Meet</h1>
-            <p>Poznejte příběh, lidi a hodnoty za naší platformou</p>
-        </section>
+<section class="page-header">
+    <h1>O Habibi Meet</h1>
+    <p>Poznejte příběh, lidi a hodnoty za naší platformou</p>
+</section>
 
-        <section class="about-container">
-            <!-- Box 1: Náš příběh -->
-            <div class="big-box">
-                <div class="small-box">
-                    <div class="box-icon">📖</div>
-                    <h2>Jak to začalo</h2>
-                    <p>Habibi Meet vznikl v roce 2023 jako školní projekt se záměrem propojit lidi různých kultur. Od malého nápadu se projekt rozrostl v plnohodnotnou platformu s tisíci uživateli.</p>
-                    <p>Naším cílem bylo vytvořit prostor, kde se lidé cítí bezpečně a mohou navazovat opravdová přátelství bez ohledu na jejich původ.</p>
-                </div>
-                <div class="small-box">
-                    <div class="box-icon">🎯</div>
-                    <h2>Naše mise</h2>
-                    <p>Věříme, že technologie by měla lidi spojovat, ne rozdělovat. Proto vytváříme platformu založenou na respektu, otevřenosti a autentických vztazích.</p>
-                    <p>Chceme být mostem mezi kulturami a poskytovat prostor pro smysluplné konverzace a společné zážitky.</p>
-                </div>
-            </div>
+<section class="about-container">
+    <div class="big-box">
+        <div class="small-box">
+            <div class="box-icon">📖</div>
+            <h2>Jak to začalo</h2>
+            <p>Habibi Meet vznikl v roce 2023 jako školní projekt se záměrem propojit lidi různých kultur. Od malého nápadu se projekt rozrostl v plnohodnotnou platformu s tisíci uživateli.</p>
+            <p>Naším cílem bylo vytvořit prostor, kde se lidé cítí bezpečně a mohou navazovat opravdová přátelství bez ohledu na jejich původ.</p>
+        </div>
+        <div class="small-box">
+            <div class="box-icon">🎯</div>
+            <h2>Naše mise</h2>
+            <p>Věříme, že technologie by měla lidi spojovat, ne rozdělovat. Proto vytváříme platformu založenou na respektu, otevřenosti a autentických vztazích.</p>
+            <p>Chceme být mostem mezi kulturami a poskytovat prostor pro smysluplné konverzace a společné zážitky.</p>
+        </div>
+    </div>
 
-            <!-- Box 2: Naše hodnoty -->
-            <div class="big-box">
-                <div class="small-box">
-                    <div class="box-icon">💎</div>
-                    <h2>Autenticita</h2>
-                    <p>Podporujeme upřímnost a otevřenost. Na Habiii Meet můžeš být sám sebou bez nutnosti předstírat.</p>
-                    <p>Žádné falešné filtry, jen skuteční lidé se skutečnými příběhy a zážitky, které stojí za to sdílet.</p>
-                </div>
-                <div class="small-box">
-                    <div class="box-icon">🤝</div>
-                    <h2>Respekt</h2>
-                    <p>Respektujeme rozdíly a vytváříme inkluzivní prostředí pro všechny uživatele bez ohledu na jejich pozadí.</p>
-                    <p>Naše komunita je založena na vzájemné úctě, empatii a pochopení mezi všemi členy.</p>
-                </div>
-            </div>
+    <div class="big-box">
+        <div class="small-box">
+            <div class="box-icon">💎</div>
+            <h2>Autenticita</h2>
+            <p>Podporujeme upřímnost a otevřenost. Na Habibi Meet můžeš být sám sebou bez nutnosti předstírat.</p>
+            <p>Žádné falešné filtry, jen skuteční lidé se skutečnými příběhy a zážitky, které stojí za to sdílet.</p>
+        </div>
+        <div class="small-box">
+            <div class="box-icon">🤝</div>
+            <h2>Respekt</h2>
+            <p>Respektujeme rozdíly a vytváříme inkluzivní prostředí pro všechny uživatele bez ohledu na jejich pozadí.</p>
+            <p>Naše komunita je založena na vzájemné úctě, empatii a pochopení mezi všemi členy.</p>
+        </div>
+    </div>
 
-            <!-- Box 3: Náš tým -->
-            <div class="big-box">
-                <div class="small-box">
-                    <div class="box-icon">👨‍💻</div>
-                    <h2>Zakladatel</h2>
-                    <p><strong>Sebastian Kuška</strong> - Student a tvůrce projektu, který věří v sílu propojení lidí prostřednictvím technologií.</p>
-                    <p>Spojuje vášeň pro programování s touhou vytvářet produkty, které mají reálný dopad na životy lidí.</p>
-                </div>
-                <div class="small-box">
-                    <div class="box-icon">👥</div>
-                    <h2>Komunita</h2>
-                    <p>Habibi Meet tvoří především jeho uživatelé. Jsme vděční za každého člena naší rostoucí komunity.</p>
-                    <p>Díky zpětné vazbě a nápadům od uživatelů můžeme platformu neustále vylepšovat a přizpůsobovat potřebám komunity.</p>
-                </div>
-            </div>
+    <div class="big-box">
+        <div class="small-box">
+            <div class="box-icon">👨‍💻</div>
+            <h2>Zakladatel</h2>
+            <p><strong>Sebastian Kuška</strong> - Student a tvůrce projektu, který věří v sílu propojení lidí prostřednictvím technologií.</p>
+            <p>Spojuje vášeň pro programování s touhou vytvářet produkty, které mají reálný dopad na životy lidí.</p>
+        </div>
+        <div class="small-box">
+            <div class="box-icon">👥</div>
+            <h2>Komunita</h2>
+            <p>Habibi Meet tvoří především jeho uživatelé. Jsme vděční za každého člena naší rostoucí komunity.</p>
+            <p>Díky zpětné vazbě a nápadům od uživatelů můžeme platformu neustále vylepšovat a přizpůsobovat potřebám komunity.</p>
+        </div>
+    </div>
 
-            <!-- Box 4: Technologie a bezpečnost -->
-            <div class="big-box">
-                <div class="small-box">
-                    <div class="box-icon">🔐</div>
-                    <h2>Bezpečnost dat</h2>
-                    <p>Tvoje soukromí bereme vážně. Používáme nejmodernější šifrovací technologie pro ochranu tvých osobních údajů.</p>
-                    <p>Tvá data nikdy neprodáváme třetím stranám a máš plnou kontrolu nad tím, co sdílíš a s kým.</p>
-                </div>
-                <div class="small-box">
-                    <div class="box-icon">⚡</div>
-                    <h2>Moderní technologie</h2>
-                    <p>Využíváme nejnovější webové technologie pro rychlý, responzivní a intuitivní uživatelský zážitek.</p>
-                    <p>Naše platforma je optimalizovaná pro všechna zařízení a zajišťuje plynulý chod i při nízké kvalitě připojení.</p>
-                </div>
-            </div>
+    <div class="big-box">
+        <div class="small-box">
+            <div class="box-icon">🔐</div>
+            <h2>Bezpečnost dat</h2>
+            <p>Tvoje soukromí bereme vážně. Používáme nejmodernější šifrovací technologie pro ochranu tvých osobních údajů.</p>
+            <p>Tvá data nikdy neprodáváme třetím stranám a máš plnou kontrolu nad tím, co sdílíš a s kým.</p>
+        </div>
+        <div class="small-box">
+            <div class="box-icon">⚡</div>
+            <h2>Moderní technologie</h2>
+            <p>Využíváme nejnovější webové technologie pro rychlý, responzivní a intuitivní uživatelský zážitek.</p>
+            <p>Naše platforma je optimalizovaná pro všechna zařízení a zajišťuje plynulý chod i při nízké kvalitě připojení.</p>
+        </div>
+    </div>
 
-            <!-- Box 5: Budoucnost -->
-            <div class="big-box">
-                <div class="small-box">
-                    <div class="box-icon">🚀</div>
-                    <h2>Kam směřujeme</h2>
-                    <p>Plánujeme rozšíření funkcí včetně live video eventů, pokročilých nástrojů pro tvorbu komunit a AI asistenta pro lepší propojení uživatelů.</p>
-                    <p>Chceme se stát jedničkou mezi sociálními sítěmi zaměřenými na skutečné lidské vztahy.</p>
-                </div>
-                <div class="small-box">
-                    <div class="box-icon">🌱</div>
-                    <h2>Udržitelný růst</h2>
-                    <p>Rosteme pomalu, ale jistě. Nechceme obětovat kvalitu komunity kvůli rychlému růstu uživatelské základny.</p>
-                    <p>Každý nový člen je pro nás důležitý a chceme zajistit, že Habibi Meet zůstane místem pro skutečná spojení.</p>
-                </div>
-            </div>
-        </section>
+    <div class="big-box">
+        <div class="small-box">
+            <div class="box-icon">🚀</div>
+            <h2>Kam směřujeme</h2>
+            <p>Plánujeme rozšíření funkcí včetně live video eventů, pokročilých nástrojů pro tvorbu komunit a AI asistenta pro lepší propojení uživatelů.</p>
+            <p>Chceme se stát jedničkou mezi sociálními sítěmi zaměřenými na skutečné lidské vztahy.</p>
+        </div>
+        <div class="small-box">
+            <div class="box-icon">🌱</div>
+            <h2>Udržitelný růst</h2>
+            <p>Rosteme pomalu, ale jistě. Nechceme obětovat kvalitu komunity kvůli rychlému růstu uživatelské základny.</p>
+            <p>Každý nový člen je pro nás důležitý a chceme zajistit, že Habibi Meet zůstane místem pro skutečná spojení.</p>
+        </div>
+    </div>
+</section>
 
-    </main>
-
-    <footer>
-        <p>&copy; 2024 Habibi Meet. Všechna práva vyhrazena.</p>
-        <p>Vytvořeno jako školní projekt</p>
-    </footer>
-
-    <button class="scroll-to-top" id="scrollToTop" onclick="scrollToTop()">↑</button>
-
+@section Scripts {
     <script>
-        // Mobile menu toggle
-        function toggleMobileMenu() {
-            const navLinks = document.getElementById('navLinks');
-            navLinks.classList.toggle('mobile-active');
-        }
-
-        // Scroll to top button
-        const scrollToTopBtn = document.getElementById('scrollToTop');
-
-        window.addEventListener('scroll', () => {
-            if (window.pageYOffset > 300) {
-                scrollToTopBtn.classList.add('visible');
-            } else {
-                scrollToTopBtn.classList.remove('visible');
-            }
-        });
-
-        function scrollToTop() {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        }
-
-        // Animace při scrollování
         const animateOnScroll = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -160,5 +102,4 @@
             animateOnScroll.observe(el);
         });
     </script>
-</body>
-</html>
+}
