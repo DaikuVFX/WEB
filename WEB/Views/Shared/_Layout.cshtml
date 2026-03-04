@@ -16,7 +16,15 @@
                 <li><a asp-controller="Home" asp-action="Features">Funkce</a></li>
                 <li><a asp-controller="Home" asp-action="About">O nás</a></li>
                 <li><a asp-controller="Home" asp-action="Privacy">Soukromí</a></li>
-                <li><a asp-controller="Account" asp-action="Login">Přihlásit se</a></li>
+                @if (User.Identity?.IsAuthenticated == true)
+                {
+                    <li><a asp-controller="User" asp-action="Index">Profil (@User.Identity.Name)</a></li>
+                    <li><a asp-controller="Account" asp-action="Logout">Odhlásit se</a></li>
+                }
+                else
+                {
+                    <li><a asp-controller="Account" asp-action="Login">Přihlásit se</a></li>
+                }
             </ul>
         </nav>
     </header>
@@ -26,7 +34,7 @@
     </main>
 
     <footer>
-        <p>&copy; 2026 Habibi Meet. Autor Sebastian Kuška.</p>
+        <p>&copy; 2024 Habibi Meet. Autor Sebastian Kuška.</p>
         <p>Vytvořeno jako školní projekt</p>
     </footer>
 
