@@ -4,7 +4,7 @@
     ViewData["Title"] = "Můj profil";
 }
 <section class="page-header">
-    <h1>Vítej, @ViewBag.Username! 👋</h1>
+    <<h1>Vítej, @(Model?.DisplayName != "" ? Model?.DisplayName : ViewBag.Username)! 👋</h1>
     <p>Toto je tvůj profil na Habibi Meet</p>
 </section>
 <section class="about-container">

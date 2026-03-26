@@ -12,13 +12,16 @@
             <div class="logo">Habibi Meet</div>
             <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
             <ul class="nav-links" id="navLinks">
+                @{
+                    var displayName = User.FindFirst("DisplayName")?.Value ?? User.Identity?.Name;
+                }
                 <li><a asp-controller="Home" asp-action="Index">Domů</a></li>
                 <li><a asp-controller="Home" asp-action="Features">Funkce</a></li>
                 <li><a asp-controller="Home" asp-action="About">O nás</a></li>
                 <li><a asp-controller="Home" asp-action="Privacy">Soukromí</a></li>
                 @if (User.Identity?.IsAuthenticated == true)
                 {
-                    <li><a asp-controller="User" asp-action="Index">Profil (@User.Identity.Name)</a></li>
+                    <li><a asp-controller="User" asp-action="Index">Profil (@displayName)</a></li>
                     <li><a asp-controller="Account" asp-action="Logout">Odhlásit se</a></li>
                 }
                 else
@@ -28,24 +31,19 @@
             </ul>
         </nav>
     </header>
-
     <main>
         @RenderBody()
     </main>
-
     <footer>
         <p>&copy; 2024 Habibi Meet. Autor Sebastian Kuška.</p>
         <p>Vytvořeno jako školní projekt</p>
     </footer>
-
     <button class="scroll-to-top" id="scrollToTop" onclick="scrollToTop()">↑</button>
-
     <script>
         function toggleMobileMenu() {
             const navLinks = document.getElementById('navLinks');
             navLinks.classList.toggle('mobile-active');
         }
-
         const scrollToTopBtn = document.getElementById('scrollToTop');
         window.addEventListener('scroll', () => {
             if (window.pageYOffset > 300) {
@@ -54,12 +52,10 @@
                 scrollToTopBtn.classList.remove('visible');
             }
         });
-
         function scrollToTop() {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
     </script>
-
     @RenderSection("Scripts", required: false)
 </body>
 </html>
