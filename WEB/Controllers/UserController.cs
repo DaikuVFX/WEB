@@ -11,6 +11,7 @@ namespace WEB.Controllers
     public class UserController : Controller
     {
         private readonly AppDbContext _db;
+
         public UserController(AppDbContext db)
         {
             _db = db;
@@ -21,6 +22,7 @@ namespace WEB.Controllers
         {
             var username = User.FindFirst(ClaimTypes.Name)?.Value;
             var user = _db.Users.FirstOrDefault(u => u.Username == username);
+
             ViewBag.Username = username;
             return View(user);
         }
@@ -31,23 +33,28 @@ namespace WEB.Controllers
         {
             var username = User.FindFirst(ClaimTypes.Name)?.Value;
             var user = _db.Users.FirstOrDefault(u => u.Username == username);
+
             if (user != null)
             {
-                user.DisplayName = displayName;
+                user.DisplayName = displayName ?? "";
                 await _db.SaveChangesAsync();
 
-                // Refresh the auth cookie with the updated display name
                 var claims = new List<Claim>
                 {
-                    new Claim(ClaimTypes.Name, username),
-                    new Claim("DisplayName", displayName)
+                    new Claim(ClaimTypes.Name, user.Username),
+                    new Claim("DisplayName", user.DisplayName ?? "")
                 };
+
                 var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
                 var principal = new ClaimsPrincipal(identity);
-                await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
+
+                await HttpContext.SignInAsync(
+                    CookieAuthenticationDefaults.AuthenticationScheme,
+                    principal);
 
                 ViewBag.Success = "Změny uloženy!";
             }
+
             ViewBag.Username = username;
             return View(user);
         }

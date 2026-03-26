@@ -34,7 +34,8 @@ namespace WEB.Controllers
             var user = new User
             {
                 Username = username,
-                PasswordHash = HashPassword(password)
+                PasswordHash = HashPassword(password),
+                DisplayName = ""
             };
 
             _db.Users.Add(user);
@@ -58,13 +59,20 @@ namespace WEB.Controllers
                 return View();
             }
 
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+
             var claims = new List<Claim>
             {
-                new Claim(ClaimTypes.Name, user.Username)
+                new Claim(ClaimTypes.Name, user.Username),
+                new Claim("DisplayName", user.DisplayName ?? "")
             };
 
             var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
-            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(identity));
+            var principal = new ClaimsPrincipal(identity);
+
+            await HttpContext.SignInAsync(
+                CookieAuthenticationDefaults.AuthenticationScheme,
+                principal);
 
             return RedirectToAction("Index", "Home");
         }
