@@ -16,6 +16,7 @@
             <h2>Můj účet</h2>
             <p><strong>Uživatelské jméno:</strong> @ViewBag.Username</p>
             <p><strong>Zobrazované jméno:</strong> @(string.IsNullOrWhiteSpace(Model?.DisplayName) ? "Nenastaveno" : Model.DisplayName)</p>
+            <p><strong>Bio:</strong> @(Model?.Bio != "" ? Model?.Bio : "Nenastaveno")</p>
             <p>Vítej zpět v komunitě Habibi Meet!</p>
         </div>
 
@@ -31,6 +32,7 @@
             <form method="post" asp-action="Index">
                 <label>Zobrazované jméno:</label>
                 <input type="text" name="displayName" value="@Model?.DisplayName" />
+                <label>Bio:</label><textarea name="bio" rows="3">@Model?.Bio</textarea>
                 <button type="submit" class="cta-button">Uložit</button>
             </form>
 

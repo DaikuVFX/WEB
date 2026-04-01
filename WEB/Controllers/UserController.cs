@@ -29,32 +29,27 @@ namespace WEB.Controllers
 
         [Authorize]
         [HttpPost]
-        public async Task<IActionResult> Index(string displayName)
+        public async Task<IActionResult> Index(string displayName, string bio)
         {
             var username = User.FindFirst(ClaimTypes.Name)?.Value;
             var user = _db.Users.FirstOrDefault(u => u.Username == username);
-
             if (user != null)
             {
-                user.DisplayName = displayName ?? "";
+                user.DisplayName = displayName;
+                user.Bio = bio;
                 await _db.SaveChangesAsync();
 
                 var claims = new List<Claim>
-                {
-                    new Claim(ClaimTypes.Name, user.Username),
-                    new Claim("DisplayName", user.DisplayName ?? "")
-                };
-
+        {
+            new Claim(ClaimTypes.Name, username),
+            new Claim("DisplayName", displayName)
+        };
                 var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
                 var principal = new ClaimsPrincipal(identity);
-
-                await HttpContext.SignInAsync(
-                    CookieAuthenticationDefaults.AuthenticationScheme,
-                    principal);
+                await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
 
                 ViewBag.Success = "Změny uloženy!";
             }
-
             ViewBag.Username = username;
             return View(user);
         }
