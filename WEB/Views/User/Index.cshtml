@@ -15,15 +15,15 @@
             <div class="box-icon">👤</div>
             <h2>Můj účet</h2>
             <div class="profile-field">
-                <span class="profile-label">Uživatelské jméno</span>
+                <span class="profile-label">Uživatelské jméno:</span>
                 <span class="profile-value">@ViewBag.Username</span>
             </div>
             <div class="profile-field">
-                <span class="profile-label">Zobrazované jméno</span>
+                <span class="profile-label">Zobrazované jméno:</span>
                 <span class="profile-value">@(string.IsNullOrWhiteSpace(Model?.DisplayName) ? "Nenastaveno" : Model.DisplayName)</span>
             </div>
             <div class="profile-field">
-                <span class="profile-label">Bio</span>
+                <span class="profile-label">Bio:</span>
                 <span class="profile-value bio-text">@(string.IsNullOrWhiteSpace(Model?.Bio) ? "Nenastaveno" : Model.Bio)</span>
                 @if (Model?.BioUpdatedAt != null)
                 {
