@@ -7,5 +7,6 @@
         public string PasswordHash { get; set; } = string.Empty;
         public string DisplayName { get; set; } = string.Empty;
         public string Bio { get; set; } = string.Empty;
+        public DateTime? BioUpdatedAt { get; set; }
     }
 }

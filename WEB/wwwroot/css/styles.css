@@ -1068,3 +1068,85 @@ footer p {
         border: 1px solid #ccc;
         font-size: 1rem;
     }
+
+.profile-field {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 14px;
+}
+
+.profile-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #888;
+    margin-bottom: 2px;
+}
+
+.profile-value {
+    font-size: 1rem;
+    color: #222;
+    font-weight: 500;
+}
+
+.bio-text {
+    white-space: pre-wrap;
+}
+
+.bio-timestamp {
+    font-size: 0.75rem;
+    color: #aaa;
+    margin-top: 4px;
+}
+
+.profile-form .form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 14px;
+}
+
+.profile-form label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 4px;
+    color: #555;
+}
+
+.profile-form input,
+.profile-form textarea {
+    padding: 10px 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    resize: vertical;
+    transition: border 0.2s;
+}
+
+    .profile-form input:focus,
+    .profile-form textarea:focus {
+        outline: none;
+        border-color: #7c6fc4;
+    }
+
+.success-msg {
+    background: #f0faf0;
+    color: #2e7d32;
+    padding: 10px 14px;
+    border-radius: 8px;
+    margin-bottom: 14px;
+    font-size: 0.9rem;
+}
+
+.cta-button.secondary {
+    background: transparent;
+    border: 2px solid #7c6fc4;
+    color: #7c6fc4;
+    margin-top: 10px;
+    display: inline-block;
+    text-align: center;
+}
+
+    .cta-button.secondary:hover {
+        background: #7c6fc4;
+        color: white;
+    }

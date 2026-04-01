@@ -1,5 +1,4 @@
 ﻿@model WEB.Models.User
-
 @{
     ViewData["Title"] = "Můj profil";
 }
@@ -11,32 +10,48 @@
 
 <section class="about-container">
     <div class="big-box">
+
         <div class="small-box">
             <div class="box-icon">👤</div>
             <h2>Můj účet</h2>
-            <p><strong>Uživatelské jméno:</strong> @ViewBag.Username</p>
-            <p><strong>Zobrazované jméno:</strong> @(string.IsNullOrWhiteSpace(Model?.DisplayName) ? "Nenastaveno" : Model.DisplayName)</p>
-            <p><strong>Bio:</strong> @(Model?.Bio != "" ? Model?.Bio : "Nenastaveno")</p>
-            <p>Vítej zpět v komunitě Habibi Meet!</p>
+            <div class="profile-field">
+                <span class="profile-label">Uživatelské jméno</span>
+                <span class="profile-value">@ViewBag.Username</span>
+            </div>
+            <div class="profile-field">
+                <span class="profile-label">Zobrazované jméno</span>
+                <span class="profile-value">@(string.IsNullOrWhiteSpace(Model?.DisplayName) ? "Nenastaveno" : Model.DisplayName)</span>
+            </div>
+            <div class="profile-field">
+                <span class="profile-label">Bio</span>
+                <span class="profile-value bio-text">@(string.IsNullOrWhiteSpace(Model?.Bio) ? "Nenastaveno" : Model.Bio)</span>
+                @if (Model?.BioUpdatedAt != null)
+                {
+                    <span class="bio-timestamp">Naposledy upraveno: @Model.BioUpdatedAt.Value.ToString("d. M. yyyy HH:mm")</span>
+                }
+            </div>
         </div>
 
         <div class="small-box">
             <div class="box-icon">⚙️</div>
             <h2>Nastavení</h2>
-
             @if (ViewBag.Success != null)
             {
-                <p style="color:green">@ViewBag.Success</p>
+                <div class="success-msg">✅ @ViewBag.Success</div>
             }
-
-            <form method="post" asp-action="Index">
-                <label>Zobrazované jméno:</label>
-                <input type="text" name="displayName" value="@Model?.DisplayName" />
-                <label>Bio:</label><textarea name="bio" rows="3">@Model?.Bio</textarea>
-                <button type="submit" class="cta-button">Uložit</button>
+            <form method="post" asp-action="Index" class="profile-form">
+                <div class="form-group">
+                    <label>Zobrazované jméno</label>
+                    <input type="text" name="displayName" value="@Model?.DisplayName" placeholder="Zadej zobrazované jméno..." />
+                </div>
+                <div class="form-group">
+                    <label>Bio</label>
+                    <textarea name="bio" rows="4" placeholder="Něco o sobě...">@Model?.Bio</textarea>
+                </div>
+                <button type="submit" class="cta-button">Uložit změny</button>
             </form>
-
-            <a asp-controller="Account" asp-action="Logout" class="cta-button">Odhlásit se</a>
+            <a asp-controller="Account" asp-action="Logout" class="cta-button secondary">Odhlásit se</a>
         </div>
+
     </div>
 </section>
